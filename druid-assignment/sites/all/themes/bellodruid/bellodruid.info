@@ -1,0 +1,23 @@
+name = Theme Pre-assignment
+description = My Theme for Druid company
+version = 0.2.1
+core = 7.x
+engine = phptemplate
+
+screenshot = myscreenshot.jpg
+
+regions[left]= Left sidebar
+regions[right]= Right sidebar
+regions[content]= Content
+regions[header]= Header
+regions[footer]= Footer
+regions[footer_content_1]= Footer Content 1
+regions[footer_content_2]= Footer Content 2
+regions[footer_content_3]= Footer Content 3
+
+stylesheets[all][] = mystyle.css
+stylesheets[print][] = myprint.css
+
+scripts[] = js/equalHeight.js
+scripts[] = js/pxToEm.js
+scripts[] = js/ready.js

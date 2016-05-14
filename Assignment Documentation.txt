@@ -1,0 +1,232 @@
+//Change the site to use a Finnish date format (dd.mm.yyyy)
+
+There is need for date format to confirm to country style , therefore in order to get the job done, I took the following steps
+
+STEP TAKEN;
+
+I went to configuration -> Date and time, I change format of Long, medium and short to specified format(dd.mm.yyyy).
+
+
+//Set the default JPEG quality of uploaded images to 90%
+
+In order to set the default image to 90%, I took the following step:
+
+STEP TAKEN;
+
+I went to configuration-> under Media, I clicked on IMAGE TOOLKIT and change JPEG quality from 75% default to 90%.
+
+//Create a new content type and add a taxonomy term field to it, which uses the vocabulary you created
+
+Taxonomy modules is a good module that enable sorting and categorize content. It is simply categorizing node into categories.It work such that one can give a blog post a different categories.
+
+There is need for content to be available on the page or many nodes on the page, therefore Content type is one the way to achieve this. Content type has a default Article and basic page. Content type might be needed in situation where we want to specialize features around content. For example ; Creating a product list term around around a product, or allowing people to filter a search, or may be I would want product data to take a Fields, such as Book_type, images etc.
+
+I took the following step in to create my own content type:
+
+SETTING UP A TAXONOMY
+
+1. I went to ->structure ->taxonomy-> add vocabolary, then I give my vocabulary
+
+Name: typeOfProgrammingBooks
+Description ; Type of Programming Book then saved.
+
+After that I created news terms for my Vocabulary.
+
+2. To create New Term for vocabulary
+
+I clicked on ->add term  then give it name and Description. Finally I added programming books to my vocabulary.
+
+I went back to taxonomy, I noticed I have a new vocabulary and it has several term list.
+
+3. ADD NEW FIELD TO THE CONTENT TYPE
+
+I went to structure->content type ->book_demo ->edit.Then I click on ->Manage field to add my bookName,Book Description,book-image and set my image size to (book_size) and book_type to term reference[field type] check boxes/radio button.
+
+I selected term reference because I want to link book_type to the book term added in my vocabulary. I was taken to FIELD SETTING in order to select book vocabulary to supply option for the vocabulary field and saved the field setting, I also change the value to unlimited because I might have book that covered Book_type.
+
+Adding New field to the content type
+I went to ->content ->add new content ->book_demo then filled all the field required
+
+Now, as new content is added , the content editor will select the appropriate taxonomy term from a checkbox. These categories can be used by Views to group books by category.
+
+//Add an image field to the content type and create some demo contents
+
+//Configure suitable url patterns for new content using the Pathauto module
+
+Pathauto module help user when generating content articles, blog and do not necessary need know in and out of search engine optimization. It allow to automatically use a pardon to generate url alias.
+
+Configuration alias path are shown in the pathauto configuration.
+
+//Add links to some of the demo contents to the primary menu
+
+I added links of my book_demo content I created , I put it under main menu. Menu links are added through ->structure ->menus ->add link
+
+//Grant only one of the custom user roles permission to create/edit/delete contents of the content type you created
+
+
+To grant permission to one of the user, I created another permission role called authenticated trusted user and I give it to a user called anssi. I give default authenticated user to the second user called jaakko.
+
+Therefore for anssi to be able to create/edit/delete, I go to permission page and enable by checking the box.
+
+STEP TAKEN
+I went to people -> click on permission on the TOP-RIGHT CORNER-> click on ->Roles ->add role then create authenticated trusted user.
+
+STEP 2
+
+I went to people -> edit -> authenticated user and put the user into role of Authenticated trusted user and saved
+
+STEP 3
+
+I went to people -> permission and give authenticated trusted user permission to :
+
+book-demo create new content
+book-demo edit own content
+book-demo delete own content
+
+//Grant unauthenticated users permission to post comments
+
+I went to people->permission then checked post comment box.
+
+//Create a new image style that shows images in exactly 160x90px size
+
+After uploaded images on my vocabulary term, I realized the images are too big on the page, therefore having our own image size would be the best. Therefore I took the following step to make it work:
+
+STEP 1
+
+I went to -configuration ->image style ->add style and name my style book_size then went to structure ->content type -> manage display then I clicked a setting icon to select image style(book_size) I created
+
+// Using the Views module, create a new view that lists all content of the content type you created. The list should show content title, body, terms and image using the new image style.
+
+After installed Views module with ctools dependence. Then I followed the following step to create the views page:
+
+STEP TAKEN
+I went to ->structure ->views ->add new views then I give my view a name called; list-of-all-the-content-type, then click and continue added field content title, body, terms and image style created earlier to style image size.
+
+I also add the link of my page to the demo content created.
+
+//Create a new view block that lists all the terms from the vocabulary you created
+
+I went to structure-> add new view then unchecked create page and checked create block. also selected taxonomy term and filter
+
+//Create a new view block that lists all the terms from the vocabulary you created
+
+I went to structure-> add new view then unchecked create page and checked create block. I selected taxonomy term on show form and filter. Later went to block field to set up where I want it to show(sidebar)
+
+//Create a new view block that is visible on content pages and lists other contents that have the same term as the content being viewed
+
+I am sorry this question is not clear , it look similar to what I have done before.
+
+//Create a view that lists the contents created by the current user
+
+Step taken
+- I created new view
+- Add filter by selecting -> content : type
+-Then I added contextual filter for current user simply by click "Advanced Filters" click Add link on the right side and checked ->content:Author uid"
+-select the radio button that said -> "provide default value" then select "User ID from logged in user
+
+On the Advanced link on the right side of view page I clicked add then selected User: Content authored.
+
+//Enable comments in the content type you created, and add spam-protection using Captcha and/or Honeypot modules
+
+After installed Captcha module and enabled it. I went to configure settings and activated Captcha for the comment form.
+
+//Create a form using the Webform module. Form submissions should be sent by e-mail to an administrator.
+
+STEP TAKEN
+
+- Installed and enable webform.
+- I went to the webform and added these three fields:
+
+Name, Email address and Message.
+
+// Add a date popup field to your content type using the Date module
+
+After I installed and enabled Date module, I went ahead to add new field called date to webform and the pop up date got initiated
+
+//Install and configure CKEditor module so body texts can be formatted more easily
+
+The CKEditor module got activated after installation and enable it. Then applied to my comment form.
+
+//Using the Rules module, show a message to the user every time a node is saved
+
+Rules is kind of conditional action . I use the following step to apply rules.
+
+STEP TAKEN
+
+I went to rule module configuration and add new rule:
+
+Name : Alert user
+Tag : admin
+on the dropdown; I selected "After saving new content"
+
+Action ;
+
+Parameter: List: [site:current-user:roles], Item to add: [site:current-user:uid]
+edit delete
+
+// Enable automatic scheduled backups using the Backup and Migrate module
+
+STEP TAKEN
+
+After installed and enable the module. I test to see how it work, I went ahead to backup
+and migrate module configuration to backup my database by downloading it. Later I created an article
+ page the restore my database by uploading the backup I downloaded, by the time I went back to home, I noticed that the test
+  article created after I downloaded the database backup is gone because it was not part of database backup i downloaded initially.
+
+  //Fetch data from an external source (e.g. a news site's RSS) using the Feeds module. Make nodes of the fetched data.
+
+  After Feed module installation which required job-schedule as a dependence. I took the following step;
+
+  I went to ->structure->add import and give  it name : RSs feed.
+
+  Later went to url/import then click on RSS importer's name and paste RSS feed -> http://www.smashingmagazing.com/feed
+
+//Package the content type, the views and the vocabulary into a feature using the Features module. Place your feature in the same directory as the contrib modules.
+
+Installed the features module, and enabled it, I went to the structure-> feature.
+
+Then give Feature name : Feature package,
+Description Wrapping module into the feature
+Package: Features.
+Finally select my content type, the views and vocabulary into a Feature
+
+//According to your skills: Download and enable some ready contrib theme OR create your own sub-theme based on some base theme
+
+In the process of create my own sub-theme , I follow this requirement for installing theme in drupal site : https://www.drupal.org/node/171205
+
+STEP TAKEN
+1st create A THEME MANIFEST FILE the requirement for drupal to know I have a theme. I called the file "bellodruid.info"
+
+2nd Create a customize stylesheet
+
+3rd I used print stylesheet, I declare it on my print style
+
+I am unable to complete creating my own theme because of limited time that I have and skill level at the moment, however I will still going to complete this theme because it is exciting creating a theme for my application and learning also along the process.
+
+I created Layout for my developing theme as you can see in on my theme page.
+
+I also downloaded two contributed themes :Insha and space. I selected this two because they are responsive, device compliant. I prefer Bartik theme therefore I lived it as my default theme.
+
+//Create a new view block that lists all the terms from the vocabulary you created
+
+I went to structure-> add new view then unchecked create page and checked create block. I selected taxonomy term on show form and filter. Later went to block field to set up where I want it to show(sidebar)
+
+//Install Drush and download and enable some module using it
+
+Using drush, is so amazing. It make installation convinient and log in easier. When ever I am in my project directory and want to use drush, I use these command to get my login:
+
+my project localhost path come here/user/reset/1/1463216043/HgGTphWCnjFczAm0RVvlYYu7pGZ0P3w0Bc2QOqP7W0s/login
+
+// Bonus: Create your very own module that shows the user a message when he/she is editing his/her own user profile
+
+I also could not create my module yet, this is a challenge to me which I look forward to win, I am still try to understand the architectural structure of Drupal.
+
+//Install and get acquainted with Git version control system. Put your whole site and a copy of the database into a repository at either GitHub or Bitbucket
+
+I used git clone ....assignment path. to add README file folder into my computer. then put my project into this folder.
+git status----- to know the state
+git add --all/ (filename)
+git commit -m "give message"
+git push --to finally add  the project
+
+//
